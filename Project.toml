@@ -3,6 +3,9 @@ uuid = "1b2ee4a7-f814-49bd-83fc-45af0a056f59"
 authors = ["owensnick <owensnick@gmail.com> and contributors"]
 version = "0.1.0"
 
+[deps]
+PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
+
 [compat]
 julia = "1"
 
