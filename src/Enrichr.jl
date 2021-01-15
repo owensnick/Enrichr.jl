@@ -1,9 +1,15 @@
+__precompile__()
 module Enrichr
 
 import JSON
 using DataFrames
 using PyCall
-requests = pyimport("requests")
+
+const requests = PyNULL()
+
+function __init__()
+    copy!(requests, pyimport("requests"))
+end
 
 
 export enrichr_genesets, load_genelist, view_genelist, enrichment

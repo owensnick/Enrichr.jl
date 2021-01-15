@@ -3,17 +3,11 @@
 function load_genelist(genelist, description="entest")
     url = "http://maayanlab.cloud/Enrichr/addList"
     genestr = join(genelist, "\n")
-
-    py"""
-    payload = {
-        'list' : (None, $genestr),
-        'description' : (None, $description)
-    }
-    """
-    r = requests.post(url, files=py"payload")
+    payload = Dict("list" => genestr, "description" => description)
+    r = requests.post(url, files=payload)
+    !r.ok && error("Error loading list")
     JSON.parse(r.text)
 end
-
 
 function view_genelist(config)
     url = string("http://maayanlab.cloud/Enrichr/view?userListId=", config["userListId"])
